@@ -17,25 +17,15 @@ export const Contacts = () => {
     const dispatch = useDispatch();
 
     const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
-    const [isNewContact, setIsNewContact] = useState<boolean>(false);
-
     const [searchValue, setSearchValue] = useState("");
     const [contact, setContact] = useState<ContactType>({id: 0, lastname: "", name: "", phone: "", photo: ""});
-
 
     useEffect(() => {
         dispatch(getContacts());
     }, []);
 
-    const updateContact = (contact: ContactType) => {
-        setIsFormOpen(true)
-        setContact(contact)
-        setIsNewContact(false);
-    }
-
     const openForm = () => {
         setIsFormOpen(true);
-        setIsNewContact(true);
         setContact({id: 0, lastname: "", name: "", phone: "", photo: ""});
     }
 
@@ -43,7 +33,7 @@ export const Contacts = () => {
         setIsFormOpen(false);
     }
 
-    const onChangeSearchHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(event.currentTarget.value);
     }
 
@@ -56,13 +46,12 @@ export const Contacts = () => {
                     <Input
                         type="text"
                         placeholder="Search..."
-                        onChange={onChangeSearchHandler}
+                        onChange={onChangeSearch}
                     />
                 </Col>
                 <Col>
                     <Button onClick={openForm}>Add contact</Button>
                 </Col>
-
             </Row>
             <Row>
                 <Col>
@@ -70,7 +59,6 @@ export const Contacts = () => {
                             <Container key={contact.id}>
                                 <Contact
                                     contact={contact}
-                                    openEditingForm={updateContact}
                                 />
                             </Container>
                         )
@@ -80,12 +68,12 @@ export const Contacts = () => {
                     <ModalHeader
                         toggle={closeForm}
                     >
-                        {isNewContact ? "Add contact" : "Update contact"}
+                        Add contact
                     </ModalHeader>
                     <ContactForm
                         contact={contact}
                         openForm={setIsFormOpen}
-                        isNewContact={isNewContact}
+                        isNewContact={true}
                     />
                 </Modal>
             </Row>

@@ -1,9 +1,27 @@
 .contactWrapper {
-  border: 1px solid black;
+  background-color: #f5f9ff;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
-.contactPhoto img {
-  border-radius: 50%;
-  width: 70px;
-  object-fit: cover;
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.contactPhoto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  img {
+    border-radius: 50%;
+    width: 70px;
+    object-fit: cover;
+  }
+}
+
+.contactWrapper button {
+  margin: 10px;
 }

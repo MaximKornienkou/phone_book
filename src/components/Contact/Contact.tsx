@@ -1,9 +1,11 @@
-import {Button, Col, Container, Row} from "reactstrap";
+import {Button, Col, Container, Modal, ModalHeader, Row} from "reactstrap";
 import {useDispatch} from "react-redux";
 
 import styles from "./Contact.module.scss";
 import defaultPhoto from "../../common/images/defaultPhoto.png";
-import {ContactType, deleteContact} from "../../reducers/contactsReducer";
+import {deleteContact} from "../../reducers/contactsReducer";
+import {ContactForm} from "../ContactForm/ContactForm";
+import React, {useState} from "react";
 
 type ContactPropsType = {
    contact: {
@@ -13,25 +15,29 @@ type ContactPropsType = {
        phone: string,
        photo?: string,
    }
-    openEditingForm: (contactInfo: ContactType) => void,
 }
 
-export const Contact = ({contact: {id, name, lastname, phone, photo}, openEditingForm}:ContactPropsType) => {
+export const Contact = ({contact: {id, name, lastname, phone, photo}}:ContactPropsType) => {
 
     const dispatch = useDispatch();
+    const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+
+    const closeForm = () => {
+        setIsFormOpen(false);
+    }
+
+    const openForm = () => {
+        setIsFormOpen(true);
+    }
 
     const onDeleteContact = () => {
         dispatch(deleteContact(id));
     }
 
-    const onChangeContact = (contact: ContactType) => {
-        openEditingForm(contact);
-    }
-
     return (
         <Container className={styles.contactWrapper}>
             <Row>
-                <Col md="8">
+                <Col md="8" className={styles.contactInfo}>
                     <Row>{name}</Row>
                     <Row>{lastname}</Row>
                     <Row>{phone}</Row>
@@ -40,13 +46,25 @@ export const Contact = ({contact: {id, name, lastname, phone, photo}, openEditin
                     <img src={photo ? photo : defaultPhoto} alt="Avatar"/>
                 </Col>
                 <Col>
-                    <Button onClick={() => onChangeContact({id, name, lastname, phone, photo})}>
+                    <Button onClick={openForm} color="primary">
                         Update
                     </Button>
-                    <Button onClick={onDeleteContact}>
+                    <Button onClick={onDeleteContact} color="danger">
                         Delete
                     </Button>
                 </Col>
+                <Modal isOpen={isFormOpen}>
+                    <ModalHeader
+                        toggle={closeForm}
+                    >
+                        Update contact
+                    </ModalHeader>
+                    <ContactForm
+                        contact={{id, name, lastname, phone, photo}}
+                        openForm={setIsFormOpen}
+                        isNewContact={false}
+                    />
+                </Modal>
             </Row>
         </Container>
     )

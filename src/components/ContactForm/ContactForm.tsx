@@ -51,7 +51,7 @@ export const ContactForm = ({
     }
 
     const updateContactFormInfo = (contactInfo: UpdateContactInfo) => {
-            dispatch(updateContactInfo(contact.id, contactInfo));
+        dispatch(updateContactInfo(contact.id, contactInfo));
     }
 
     const submitHandler = (event: FormEvent<HTMLFormElement>) => {
@@ -74,48 +74,48 @@ export const ContactForm = ({
 
     return (
         <Container>
-            <div>
-                <Form onSubmit={submitHandler}>
-                    <FormGroup>
-                        <Label for="name">
-                            Enter name
-                        </Label>
-                        <Input id="name"
-                               placeholder="name"
-                               onChange={onChangeSetName}
-                               value={name}
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="lastname">
-                            Enter lastname
-                        </Label>
-                        <Input id="lastname"
-                               placeholder="lastname"
-                               onChange={onChangeSetLastname}
-                               value={lastname}
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label for="phoneNumber">
-                            Enter phone number
-                        </Label>
-                        <Input id="phoneNumber"
-                               placeholder="phone number"
-                               onChange={onChangeSetPhoneNumber}
-                               value={phone}
-                        />
-                    </FormGroup>
-                    <FormGroup>
-                        <Button>
-                            {isNewContact ? "Add" : "Update"}
-                        </Button>
-                        <Button onClick={()=> {openForm(false)}}>
-                            Cancel
-                        </Button>
-                    </FormGroup>
-                </Form>
-            </div>
+            <Form onSubmit={submitHandler}>
+                <FormGroup className="mt-3">
+                    <Label for="name">
+                        Enter name
+                    </Label>
+                    <Input id="name"
+                           placeholder="name"
+                           onChange={onChangeSetName}
+                           value={name}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="lastname">
+                        Enter lastname
+                    </Label>
+                    <Input id="lastname"
+                           placeholder="lastname"
+                           onChange={onChangeSetLastname}
+                           value={lastname}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="phoneNumber">
+                        Enter phone number
+                    </Label>
+                    <Input id="phoneNumber"
+                           placeholder="phone number"
+                           onChange={onChangeSetPhoneNumber}
+                           value={phone}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Button className="m-2" disabled={!name || !lastname || !phone}>
+                        {isNewContact ? "Add" : "Update"}
+                    </Button>
+                    <Button onClick={() => {
+                        openForm(false)
+                    }}>
+                        Cancel
+                    </Button>
+                </FormGroup>
+            </Form>
         </Container>
     )
 }

@@ -1,5 +1,5 @@
 export const Error404 = () => {
     return (
-        <h5>404</h5>
+        <h3>404</h3>
     )
 }

@@ -1,7 +1,7 @@
 import {
     addNewContact,
     contactsReducer, ContactType,
-    deleteContact, getContacts, setContacts,
+    deleteContact, setContacts,
     updateContactInfo
 } from "./contactsReducer";
 
@@ -11,7 +11,7 @@ let startState: Array<ContactType>
 beforeEach(() => {
 
     startState = [
-        {id: 1, name: "Maxim", lastname: "Kornienko", phone: "0505950428",},
+        {id: 1, name: "Maxim", lastname: "Kornienko", phone: "0994578933",},
         {id: 2, name: "Alexandra", lastname: "Cravchishina", phone: "0994433555",}
     ]
 });
@@ -55,7 +55,7 @@ test("set contacts list", () => {
     const startState: Array<ContactType> = []
 
     const contacts = [
-        {id: 1, name: "Maxim", lastname: "Kornienko", phone: "0505950428",},
+        {id: 1, name: "Maxim", lastname: "Kornienko", phone: "0994578933",},
         {id: 2, name: "Alexandra", lastname: "Cravchishina", phone: "0994433555",}
     ]
 
@@ -64,5 +64,5 @@ test("set contacts list", () => {
     expect(endState.length).toBe(2);
     expect(endState[0].name).toBe("Maxim");
     expect(endState[1].id).toBe(2);
-    expect(endState[0].phone).toBe("0505950428");
+    expect(endState[0].phone).toBe("0994578933");
 });
