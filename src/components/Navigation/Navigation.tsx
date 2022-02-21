@@ -36,7 +36,7 @@ export const Navigation = () => {
                                 {navigation.map(elem =>
                                     <Col key={elem}>
                                         <NavLink
-                                            href={`/${elem}`}
+                                            href={`/#/${elem}`}
                                         >
                                             {elem}
                                         </NavLink>
