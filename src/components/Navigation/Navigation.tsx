@@ -11,10 +11,6 @@ import React, {useState} from "react";
 import styles from "./styles.module.scss";
 
 
-
-
-
-
 export const Navigation = () => {
 
     const navigation = ["home", "contacts", "about", "404"];
@@ -50,35 +46,3 @@ export const Navigation = () => {
         </div>
     );
 }
-            // {/*<Navbar*/}
-            // {/*    color="light"*/}
-            // {/*    expand="sm"*/}
-            // {/*    light*/}
-            // {/*>*/}
-            // {/*    <NavbarBrand >*/}
-            // {/*        Phone book*/}
-            // {/*    </NavbarBrand>*/}
-            //
-            // {/*    <Collapse navbar isOpen>*/}
-            // {/*        <Nav*/}
-            // {/*            className="me-auto"*/}
-            // {/*            navbar*/}
-            // {/*        >*/}
-            // {/*            <NavItem>*/}
-            // {/*                <NavLink href="/#/home/">*/}
-            // {/*                    Home*/}
-            // {/*                </NavLink>*/}
-            // {/*            </NavItem>*/}
-            // {/*            <NavItem>*/}
-            // {/*                <NavLink href="/#/contacts">*/}
-            // {/*                    Contacts*/}
-            // {/*                </NavLink>*/}
-            // {/*            </NavItem>*/}
-            // {/*            <NavItem>*/}
-            // {/*                <NavLink href="/#/about">*/}
-            // {/*                    About*/}
-            // {/*                </NavLink>*/}
-            // {/*            </NavItem>*/}
-            // {/*        </Nav>*/}
-            // {/*    </Collapse>*/}
-            // {/*</Navbar>*/}
